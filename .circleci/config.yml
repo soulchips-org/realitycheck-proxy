@@ -294,6 +294,7 @@ jobs:
          mv config ~/.ssh/config
          chmod 700 ~/.ssh
 
+      - checkout
       - run: mkdir -p stuff
       - run: echo 5 >./stuff/thing
 
@@ -333,6 +334,7 @@ jobs:
          mv config ~/.ssh/config
          chmod 700 ~/.ssh
 
+      - checkout
       - run:
           name: Creating Dummy Artifacts
           command: |
