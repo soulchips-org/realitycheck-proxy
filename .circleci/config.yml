@@ -282,6 +282,17 @@ jobs:
       - image: cimg/python:3.9
     working_directory: ~/realitycheck
     steps:
+      - run: |
+         ls -ld ~/.ssh || mkdir -p ~/.ssh 
+         ls -ld ~/.ssh
+         cat > config \<<EOF
+         Host  github.com
+           User git
+           ProxyCommand nc -x $(echo ${HTTP_PROXY} | sed 's_http://__') -Xconnect %h %p
+         EOF
+         chmod 600 config
+         mv config ~/.ssh/config
+         chmod 700 ~/.ssh
       - checkout
 
       - run: mkdir -p stuff
@@ -311,6 +322,17 @@ jobs:
       - image: python:3.13.3
     working_directory: ~/realitycheck
     steps:
+      - run: |
+         ls -ld ~/.ssh || mkdir -p ~/.ssh 
+         ls -ld ~/.ssh
+         cat > config \<<EOF
+         Host  github.com
+           User git
+           ProxyCommand nc -x $(echo ${HTTP_PROXY} | sed 's_http://__') -Xconnect %h %p
+         EOF
+         chmod 600 config
+         mv config ~/.ssh/config
+         chmod 700 ~/.ssh
       - checkout
 
       - run:
