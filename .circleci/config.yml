@@ -280,7 +280,7 @@ jobs:
   save_and_restore_cache:
     docker:
       - image: cimg/python:3.9
-    working_directory: ~/realitycheck
+    working_directory: ~/realitycheck-proxy
     steps:
       - run: |
          ls -ld ~/.ssh || mkdir -p ~/.ssh 
@@ -319,7 +319,7 @@ jobs:
   artifacts_test_results:
     docker:
       - image: python:3.13.3
-    working_directory: ~/realitycheck
+    working_directory: ~/realitycheck-proxy
     steps:
       - run: |
          ls -ld ~/.ssh || mkdir -p ~/.ssh 
